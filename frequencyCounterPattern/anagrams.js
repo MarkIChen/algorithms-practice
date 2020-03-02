@@ -1,6 +1,12 @@
 /*jshint esversion: 6 */
 
 function validAnagram(a, b) {
+  // It's impossible to be anagram, if the lengths are not the same.
+  if(a.length != b.length) {
+    return false;
+  }
+
+
   let firstCharArray = a.split('');
   let secondCharArray = b.split('');
 
