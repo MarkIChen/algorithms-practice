@@ -1,20 +1,22 @@
 /*jshint esversion: 6*/
 
 function countUniqueValues(array){
-    var count = 0;
+    let piernierPointer = 2;
+    let basePointer = 1;
 
-    var pointer = 0;
-    var currentNumber = array[pointer];
-    while(pointer < array.length) {
-        pointer += 1;
-
-        if(array[pointer] != currentNumber) {
-            currentNumber = array[pointer];
-            count ++;
+    while(piernierPointer < array.length) {
+        if(array[piernierPointer] == array[basePointer]) {
+            piernierPointer ++;
+        } else {
+            array[basePointer] = array[piernierPointer];
+            basePointer ++;
+            piernierPointer ++;
         }
     }
 
-    return count;
+
+
+    return basePointer;
 }
 
-console.log(countUniqueValues([-2, -1, 0, 1, 2]));
+console.log(countUniqueValues([1, 1, 1, 2, 3, 3, 4, 4, 5, 6]));
