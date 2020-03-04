@@ -1,22 +1,24 @@
 /*jshint esversion: 6*/
 
 function countUniqueValues(array){
-    let piernierPointer = 2;
-    let basePointer = 1;
+    if(array.length === 0)    return 0;
+    let piernierPointer = 0;
+    let basePointer = 0;
 
     while(piernierPointer < array.length) {
         if(array[piernierPointer] == array[basePointer]) {
             piernierPointer ++;
         } else {
-            array[basePointer] = array[piernierPointer];
             basePointer ++;
+            array[basePointer] = array[piernierPointer];
             piernierPointer ++;
         }
+        console.log(array);
+
     }
 
 
-
-    return basePointer;
+    return basePointer + 1;
 }
 
-console.log(countUniqueValues([1, 1, 1, 2, 3, 3, 4, 4, 5, 6]));
+console.log(countUniqueValues([-2, -1, -1, 0, 1]));
