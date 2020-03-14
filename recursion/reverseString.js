@@ -23,4 +23,10 @@ function reverseWithPureRecursion(s) {
   return newString;
 }
 
+function reverseSimply(s) {
+  if(s.length <= 1) return s;
+  return reverseSimply(s.slice(1))+s[0];
+}
+
 console.log(reverseWithPureRecursion('awesome'));
+console.log(reverseSimply('awesome'));
