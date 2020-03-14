@@ -2,14 +2,11 @@
 
 
 function someRecursive(arr, call){
+  if(arr.length === 0) return false;
   // add whatever parameters you deem necessary - good luck!
-  if(call(arr[0])) {
-    return true;
-  }
-  if(arr.length > 1) {
-    return someRecursive(arr.slice(1), call);
-  }
-  return false;
+  if(call(arr[0])) return true;
+
+  return someRecursive(arr.slice(1), call);
 }
 
 // SAMPLE INPUT / OUTPUT
