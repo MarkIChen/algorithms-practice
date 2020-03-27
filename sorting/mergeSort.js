@@ -1,5 +1,18 @@
 /* jshint esversion: 6 */
 
+function slice(arr) {
+  if(arr.length == 1) return arr;
+
+  var halfLength = Math.ceil(arr.length/2);
+
+  if(halfLength >= 1) {
+    var leftArr = slice(arr.slice(0, halfLength));
+    var rightArr = slice(arr.slice(halfLength));
+  }
+
+  return merge(leftArr, rightArr);
+}
+
 function merge(arr1, arr2) {
   let leftPointer = 0;
   let rightPointer = 0;
@@ -27,5 +40,5 @@ function merge(arr1, arr2) {
   return res;
 }
 
-let res = merge([1, 10, 55],[2, 14, 50, 100]);
-console.log(res);
+// let res = merge([1, 10, 55],[2, 14, 50, 100]);
+console.log(slice([4, 1, 2, 7, 10]));
