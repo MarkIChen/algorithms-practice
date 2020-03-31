@@ -1,20 +1,18 @@
 /* jshint esversion: 6 */
 
-function quickSort(arr) {
-  if (arr.length <= 1)
-    return arr;
+function quickSort(arr, leftIndex = 0, rightIndex = arr.length) {
+  if (leftIndex == rightIndex)  return;
 
-  let pivot = helper(arr);
-  let leftArr = quickSort(arr.slice(0, pivot));
-  let rightArr = quickSort(arr.slice(pivot + 1));
+  let pivot = helper();
 
-  leftArr.push(arr[pivot]);
+  quickSort(arr, leftIndex, pivot);
+  quickSort(arr, pivot + 1, rightIndex);
 
-  function helper(arr) {
-    const target = 0;
-    var pivot = 0;
+  function helper() {
+    const target = leftIndex;
+    var pivot = leftIndex;
 
-    for (let i = 1; i < arr.length; i++) {
+    for (let i = leftIndex+1; i < rightIndex; i++) {
       if (arr[i] < arr[target]) {
         pivot++;
         // exchange
@@ -24,15 +22,16 @@ function quickSort(arr) {
     exchange(arr, target, pivot);
     return pivot;
   }
+
   function exchange(arr, from, where) {
-    let temp = arr[from];
-    arr.splice(from, 1);
-    arr.splice(where, 0, temp);
+    // let temp = arr[from];
+    // arr.splice(from, 1);
+    // arr.splice(where, 0, temp);
+
+    [arr[from], arr[where]] = [arr[where], arr[from]];
   }
-  // mefge
-  return leftArr.concat(rightArr);
+
+  return arr;
 }
 
-
-
-console.log(quickSort([ 7,2, 3,  4, 11, 8, 2, 10, 5 ]));
+console.log(quickSort([ 7, 2, 3, 4, 11, 8, 2, 10, 5 ]));
