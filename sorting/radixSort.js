@@ -21,16 +21,15 @@ function radixSort(arr) {
   var mostDigitNum = mostDigit(arr);
 
   for(let i = 0;i < mostDigitNum; i++) {
-    let collector =[];
-    // initialization
-    for(let p = 0;p<10;p++){
-      collector[p]=[];
+    // create 2d array
+    let collector = [];
+    for(let j=0;j<10;j++){
+      collector[j] = [];
     }
-
+    // place into array
     for(let j=0;j<arr.length;j++) {
       var digit = getDigit(arr[j], i);
       collector[digit].push(arr[j]);
-      console.log(collector);
     }
     // re-order
     let newArr = [];
@@ -39,7 +38,6 @@ function radixSort(arr) {
         newArr.push(collector[j][p]);
       }
     }
-    console.log(newArr);
     arr = newArr;
   }
 }
