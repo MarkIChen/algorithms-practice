@@ -22,24 +22,17 @@ function radixSort(arr) {
 
   for(let i = 0;i < mostDigitNum; i++) {
     // create 2d array
-    let collector = [];
-    for(let j=0;j<10;j++){
-      collector[j] = [];
-    }
+    let collector = Array.from({length: 10}, ()=> []);
+
     // place into array
     for(let j=0;j<arr.length;j++) {
       var digit = getDigit(arr[j], i);
       collector[digit].push(arr[j]);
     }
     // re-order
-    let newArr = [];
-    for(let j=0; j < collector.length; j++){
-      for(let p=0;p<collector[j].length;p++) {
-        newArr.push(collector[j][p]);
-      }
-    }
-    arr = newArr;
+    arr = [].concat(...collector);
   }
+  return arr;
 }
 
 console.log(radixSort([2, 1, 40, 212, 11]));
